@@ -1,7 +1,17 @@
+plugins {
+	id 'java'
+}
+
 // 모든 프로젝트(모듈)에 공통으로 적용되는 설정
 allprojects {
 	group = 'com.example'
 	version = '1.0.0'
+
+	java {
+		toolchain {
+			languageVersion.set(JavaLanguageVersion.of(17))
+		}
+	}
 
 	repositories {
 		mavenCentral()  // Maven Central에서 라이브러리 다운로드
