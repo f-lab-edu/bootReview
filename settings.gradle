@@ -1,0 +1,6 @@
+rootProject.name = 'bookReview'
+include 'module-app'
+include 'module-core'
+include 'module-service'
+
+//auto detect 설정 넣어야됨
