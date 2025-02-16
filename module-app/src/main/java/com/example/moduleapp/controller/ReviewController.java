@@ -1,30 +1,18 @@
 package com.example.moduleapp.controller;
 
 import com.example.modulecore.dto.ReviewDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/api/reviews")
+@Tag(name = "리뷰 API", description = "도서 리뷰 관련 API")
 public class ReviewController {
-    private final List<ReviewDto> reviews = new ArrayList<>();
-
-    @PostMapping
-    public void addReview(@RequestBody ReviewDto reviewDto) {
-        reviewDto.setId((long) (reviews.size() + 1));
-        reviews.add(reviewDto);
-    }
-
-    @GetMapping("/{bookId}")
-    public List<ReviewDto> getReviews(@PathVariable Long bookId) {
-        List<ReviewDto> result = new ArrayList<>();
-        for (ReviewDto review : reviews) {
-            if (review.getBookId().equals(bookId)) {
-                result.add(review);
-            }
-        }
-        return result;
+    @GetMapping("/{bookId}/review")
+    @Operation(summary = "도서 리뷰 조회", description = "특정 도서의 리뷰 목록을 조회합니다.")
+    public ResponseEntity<ReviewDto> getReview(@PathVariable Long bookId) {
+        return ResponseEntity.ok(new ReviewDto(1L, bookId, 1L, "book content", "book summary", 4.5));
     }
 }

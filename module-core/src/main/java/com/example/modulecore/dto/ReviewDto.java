@@ -1,10 +1,9 @@
 package com.example.modulecore.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReviewDto {
@@ -12,5 +11,6 @@ public class ReviewDto {
     private Long bookId;
     private Long userId;
     private String content;
-    private int rating;
+    private String summary;
+    private double rating;
 }
